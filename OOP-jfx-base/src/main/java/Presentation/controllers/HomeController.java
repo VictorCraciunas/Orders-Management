@@ -10,9 +10,11 @@ public class HomeController extends SceneController {
 
     @FXML
     protected void goToClientsView() {
-
-
         this.changeScene(SCENE_IDENTIFIER.Clients_View);
     }
 
+    @FXML
+    protected void goToProductsView() {
+        this.changeScene(SCENE_IDENTIFIER.Products_View);
+    }
 }

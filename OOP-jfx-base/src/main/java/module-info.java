@@ -14,4 +14,11 @@ module com.jfxbase.oopjfxbase {
     opens com.jfxbase.oopjfxbase.utils.enums to javafx.fxml;
     exports Presentation.controllers;
     opens Presentation.controllers to javafx.fxml;
+
+    // Export the Model package to make Client and Product accessible
+    exports Model;
+
+    // Export other packages if necessary
+    exports Data_Access;
+    exports connection;
 }

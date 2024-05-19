@@ -19,10 +19,8 @@ public class AbstractDAO<T> {
 
     private final Class<T> type;
 
-    @SuppressWarnings("unchecked")
-    public AbstractDAO() {
-        this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-
+    public AbstractDAO(Class<T> type) {
+        this.type = type;
     }
 
     private String createSelectQuery(String field) {

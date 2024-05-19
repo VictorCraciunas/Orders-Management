@@ -22,13 +22,13 @@
            <TextField fx:id="firstNameInput" promptText="First Name" />
            <TextField fx:id="lastNameInput" promptText="Last Name" />
            <TextField fx:id="emailInput" promptText="Email" />
-           <Button onAction="#handleAddClient" text="Add Client" />
+           <Button onAction="#handleAddItem" text="Add Client" />
        </VBox>
        <Text layoutX="228.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients">
            <font>
                <Font size="26.0" />
            </font>
        </Text>
-      <Button layoutX="305.0" layoutY="560.0" onAction="#handleDeleteClient" text="Delete Client" />
+      <Button layoutX="305.0" layoutY="560.0" onAction="#handleDeleteItem" text="Delete Client" />
    </children>
 </AnchorPane>
