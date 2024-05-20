@@ -26,6 +26,11 @@ public class Product {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return  productName ;
+    }
+
     public void setProductName(String productName) {
         this.productName = productName;
     }

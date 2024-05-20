@@ -28,28 +28,27 @@ public class AbstractDAO<T> {
         sb.append("SELECT ");
         sb.append(" * ");
         sb.append(" FROM ");
-        sb.append(type.getSimpleName());
+        sb.append("\"" + type.getSimpleName().toLowerCase() + "\"");
         sb.append(" WHERE " + field + " =?");
         return sb.toString();
     }
 
     public List<T> findAll() {
         List<T> list = new ArrayList<>();
-        String sql = "SELECT * FROM " + type.getSimpleName();
+        String sql = "SELECT * FROM " + "\"" + type.getSimpleName().toLowerCase() +"\"";
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
-             connection = ConnectionFactory.getConnection();
-             statement = connection.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery() ;
+            connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
 
             list = createObjects(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             ConnectionFactory.close(statement);
             ConnectionFactory.close(connection);
         }
@@ -136,7 +135,7 @@ public class AbstractDAO<T> {
                 if (field.getName().equals("id")) {
                     continue; // we need to skip the collumn id
                 }
-                fieldNames.append("\"").append(field.getName()).append("\"").append(","); // we need to put the field name between \ because the PostgreSQL will convert the field name with lowecase automatically
+                fieldNames.append("\"").append(field.getName()).append("\"").append(","); // we need to put the field name between \" \" because the PostgreSQL will convert the field name with lowecase automatically
                 placeholders.append("?,");
             }
 
@@ -144,7 +143,7 @@ public class AbstractDAO<T> {
             fieldNames.setLength(fieldNames.length() - 1);
             placeholders.setLength(placeholders.length() - 1);
 
-            String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (" + placeholders + ")";
+            String query = "INSERT INTO " + "\"" + tableName + "\""  + " (" + fieldNames + ") VALUES (" + placeholders + ")";
             statement = connection.prepareStatement(query);
 
             // we replace the ? with the value of each field
@@ -193,7 +192,7 @@ public class AbstractDAO<T> {
             // Remove the last comma
             fieldNames.setLength(fieldNames.length() - 1);
 
-            String query = "UPDATE " + tableName + " Set " + fieldNames +" WHERE id = ?";
+            String query = "UPDATE " + "\"" + tableName + "\""  + " Set " + fieldNames + " WHERE id = ?";
             statement = connection.prepareStatement(query);
 
             // we replace the ? with the value of each field
@@ -228,12 +227,12 @@ public class AbstractDAO<T> {
         return result;
     }
 
-    public boolean delete(T t){
+    public boolean delete(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
         boolean result = false;
-        String sql = "DELETE FROM " + type.getSimpleName() + " WHERE id = ?";
-        try{
+        String sql = "DELETE FROM " + "\"" + type.getSimpleName().toLowerCase()+ "\"" + " WHERE id = ?";
+        try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
 
@@ -246,7 +245,7 @@ public class AbstractDAO<T> {
             }
 
             result = statement.executeUpdate() > 0;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Failed to delete object: " + e.getMessage(), e);
         } catch (IllegalAccessException e) {
             LOGGER.log(Level.SEVERE, "Illegal access: " + e.getMessage(), e);

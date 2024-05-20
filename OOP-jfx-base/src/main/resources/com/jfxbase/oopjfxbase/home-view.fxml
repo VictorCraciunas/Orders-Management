@@ -10,5 +10,5 @@
     </padding>
    <Button id="goToByeScene" onAction="#goToClientsView" snapToPixel="false" text="View Clients" />
    <Button id="goToByeScene" layoutX="81.0" onAction="#goToProductsView" layoutY="134.0"  snapToPixel="false" text="View Products" />
-   <Button id="goToByeScene" layoutX="81.0" layoutY="157.0"  snapToPixel="false" text="View Orders" />
+   <Button id="goToByeScene" layoutX="81.0" layoutY="157.0"  onAction="#goToOrdersView" snapToPixel="false" text="View Orders" />
 </VBox>

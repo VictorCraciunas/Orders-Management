@@ -1,13 +1,16 @@
 package Presentation.controllers;
 
 import Business_Logic.ClientBLL;
+import Business_Logic.Validators.validators;
 import Model.Client;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+
 
 public class ClientsController extends GenericController<Client> {
     @FXML
@@ -56,9 +59,10 @@ public class ClientsController extends GenericController<Client> {
         return firstNameColumn;
     }
 
+
     @Override
-    protected boolean areTextFieldsEmpty() {
-        return firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || emailInput.getText().isEmpty();
+    protected boolean areInputsEmpty() {
+        return validators.areTextFieldsEmpty(firstNameInput.getText(), lastNameInput.getText(), emailInput.getText());
     }
 
     @Override
@@ -76,4 +80,5 @@ public class ClientsController extends GenericController<Client> {
     private void updateItem(Client client) {
         abstractBll.updateElement(client);
     }
+
 }

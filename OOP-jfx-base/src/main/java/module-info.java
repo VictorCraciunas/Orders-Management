@@ -21,4 +21,5 @@ module com.jfxbase.oopjfxbase {
     // Export other packages if necessary
     exports Data_Access;
     exports connection;
+    exports Business_Logic.Validators;
 }

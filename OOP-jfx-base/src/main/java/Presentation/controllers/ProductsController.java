@@ -1,6 +1,9 @@
 package Presentation.controllers;
 
+import Business_Logic.OrderBLL;
 import Business_Logic.ProductBLL;
+import Business_Logic.Validators.validators;
+import Model.Order;
 import javafx.fxml.FXML;
 import Model.Product;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -9,6 +12,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsController extends GenericController<Product> {
     @FXML
@@ -20,8 +26,9 @@ public class ProductsController extends GenericController<Product> {
     @FXML
     private TextField productNameInput, priceInput, quantityInput;
 
+    OrderBLL orderBLL=new OrderBLL();
     public ProductsController() {
-        this.abstractBll=new ProductBLL();
+        this.abstractBll = new ProductBLL();
     }
 
     @Override
@@ -59,22 +66,44 @@ public class ProductsController extends GenericController<Product> {
     }
 
     @Override
-    protected boolean areTextFieldsEmpty() {
-        return productNameInput.getText().isEmpty() || priceInput.getText().isEmpty() || quantityInput.getText().isEmpty();
+    protected boolean areInputsEmpty() {
+        return validators.areTextFieldsEmpty(productNameInput.getText(), priceInput.getText(), quantityInput.getText());
     }
 
     @Override
     protected Product createItemFromInputs() {
 
-        return new Product(productNameInput.getText(),Integer.parseInt(priceInput.getText()),Integer.parseInt(quantityInput.getText()));
+        return new Product(productNameInput.getText(), Integer.parseInt(priceInput.getText()), Integer.parseInt(quantityInput.getText()));
     }
 
     @Override
     protected void clearTextFields() {
-
+        productNameInput.clear();
+        priceInput.clear();
+        quantityInput.clear();
     }
 
     private void updateItem(Product product) {
         abstractBll.updateElement(product);
+    }
+
+    @Override
+    public void deleteItem(Product selectedItem) {
+        try {
+            List<Order> orders = orderBLL.getElements();
+            if (orders != null) {
+                for (Order order : new ArrayList<>(orders)) { // Avoid concurrent modification
+                    if (order.getProductId().equals(selectedItem.getId())) {
+                        orderBLL.deleteElement(order);
+                    }
+                }
+            } else {
+                System.err.println("Order list is null, skipping order deletion.");
+            }
+            super.deleteItem(selectedItem);
+        }catch (Exception e) {
+            e.printStackTrace(); // Log the exception stack trace
+            System.err.println("An error occurred while deleting the item: " + e.getMessage());
+        }
     }
 }

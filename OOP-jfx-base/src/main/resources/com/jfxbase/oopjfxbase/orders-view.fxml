@@ -4,32 +4,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.ProductsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.OrderController">
     <children>
         <StackPane layoutY="47.0" prefHeight="451.0" prefWidth="532.0">
             <children>
                 <TableView fx:id="tableView" prefHeight="451.0" prefWidth="556.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="59.39999467134476" text="id" />
-                        <TableColumn fx:id="productNameColumn" prefWidth="158.20000457763672" text="Product Name" />
-                        <TableColumn fx:id="priceColumn" prefWidth="141.80001831054688" text="Price" />
-                        <TableColumn fx:id="quantityColumn" prefWidth="169.39999389648438" text="Quantity" />
+                        <TableColumn fx:id="clientIdColumn" prefWidth="158.20000457763672" text="clientId" />
+                        <TableColumn fx:id="productIdColumn" prefWidth="141.80001831054688" text="productId" />
+                        <TableColumn fx:id="productQuantityColumn" prefWidth="169.39999389648438" text="quantityId" />
                     </columns>
                 </TableView>
             </children>
         </StackPane>
         <VBox layoutX="14.0" layoutY="508.0" spacing="10.0">
-            <TextField fx:id="productNameInput" promptText="Product Name" />
-            <TextField fx:id="priceInput" promptText="Price" />
-            <TextField fx:id="quantityInput" promptText="quantity" />
+            <ComboBox fx:id="clientComboBox" promptText="Select Client" />
+            <ComboBox fx:id="productComboBox" promptText="Select Product" />
+            <TextField fx:id="productQuantityField" promptText="quantity" />
             <Button onAction="#handleAddItem" text="Add Product" />
         </VBox>
-        <Text layoutX="228.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products">
+        <Text layoutX="228.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders">
             <font>
                 <Font size="26.0" />
             </font>
         </Text>
         <Button layoutX="305.0" layoutY="560.0" onAction="#handleDeleteItem" text="Delete Product" />
     </children>
-
 </AnchorPane>
