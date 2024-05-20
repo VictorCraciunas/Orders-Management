@@ -59,4 +59,34 @@ public class ApplicationHandler {
 
         return ApplicationHandler._instance;
     }
+    public void navigateToClientsView() {
+        try {
+            this.views.put(SCENE_IDENTIFIER.Clients_View, FXMLLoader.load(Objects.requireNonNull(JFXBaseApplication.class.getResource("clients-view.fxml"))));
+            this.changeScene(SCENE_IDENTIFIER.Clients_View);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+    public void navigateToOrdersView() {
+        try {
+            this.views.put(SCENE_IDENTIFIER.Orders_View, FXMLLoader.load(Objects.requireNonNull(JFXBaseApplication.class.getResource("orders-view.fxml"))));
+            this.changeScene(SCENE_IDENTIFIER.Orders_View);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+    public void navigateToProductsView() {
+        try {
+            this.views.put(SCENE_IDENTIFIER.Products_View, FXMLLoader.load(Objects.requireNonNull(JFXBaseApplication.class.getResource("products-view.fxml"))));
+            this.changeScene(SCENE_IDENTIFIER.Products_View);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
 }

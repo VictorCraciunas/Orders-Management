@@ -13,5 +13,8 @@ public class ProductBLL extends AbstractBll<Product>{
     public boolean isValidElement(Product product) {
         return true;
     }
-
+    @Override
+    protected int getGeneratedId() {
+        return abstractDAO.getLastInsertId(); // Implement this method in your AbstractDAO class to fetch the last inserted ID
+    }
 }

@@ -22,4 +22,8 @@ public class OrderBLL extends AbstractBll<Order>{
         product.setQuantity(product.getQuantity() - orderQuantity);
         productBLL.updateElement(product);
     }
+    @Override
+    protected int getGeneratedId() {
+        return abstractDAO.getLastInsertId(); // Implement this method in your AbstractDAO class to fetch the last inserted ID
+    }
 }

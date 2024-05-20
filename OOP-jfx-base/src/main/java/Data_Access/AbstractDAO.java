@@ -255,4 +255,20 @@ public class AbstractDAO<T> {
         }
         return result;
     }
+
+    public int getLastInsertId() {
+        int maxId = -1;
+        String sql = "SELECT MAX(id) FROM \"" + type.getSimpleName().toLowerCase() + "\"";
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                maxId = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Failed to get max ID: " + e.getMessage(), e);
+        }
+        return maxId;
+    }
 }

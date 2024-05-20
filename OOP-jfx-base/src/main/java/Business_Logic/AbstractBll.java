@@ -1,17 +1,19 @@
 package Business_Logic;
 
 import Data_Access.AbstractDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractBll<T> {
-    public List<T> elements;
+    public ObservableList<T> elements;
     private final Class<T> type;
 
     public AbstractDAO<T> abstractDAO;
 
-    public List<T> getElements() {
+    public ObservableList<T> getElements() {
         return elements;
     }
 
@@ -20,12 +22,13 @@ public abstract class AbstractBll<T> {
     public AbstractBll() {
         this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         abstractDAO = new AbstractDAO<>(type);
-        elements = abstractDAO.findAll();
+        elements = FXCollections.observableArrayList(abstractDAO.findAll());
     }
 
     public void addElement(T t) {
         abstractDAO.insert(t);
-        elements = abstractDAO.findAll();
+        T newElement = abstractDAO.findById(getGeneratedId()); // Fetch the new element with the generated ID
+        elements.add(newElement); // Add the new element to the existing observable list
     }
 
     public void deleteElement(T t) {
@@ -40,4 +43,5 @@ public abstract class AbstractBll<T> {
     // Abstract method for validating elements
     public abstract boolean isValidElement(T t);
 
+    protected abstract int getGeneratedId();
 }

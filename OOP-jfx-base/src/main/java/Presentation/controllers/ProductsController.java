@@ -98,7 +98,7 @@ public class ProductsController extends GenericController<Product> {
                     }
                 }
             } else {
-                System.err.println("Order list is null, skipping order deletion.");
+                System.err.println("Ordher list is null, skipping order deletion.");
             }
             super.deleteItem(selectedItem);
         }catch (Exception e) {

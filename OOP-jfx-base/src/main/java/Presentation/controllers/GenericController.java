@@ -2,8 +2,10 @@ package Presentation.controllers;
 
 import Business_Logic.AbstractBll;
 import Model.Client;
+import com.jfxbase.oopjfxbase.utils.ApplicationHandler;
 import com.jfxbase.oopjfxbase.utils.SceneController;
 
+import com.jfxbase.oopjfxbase.utils.enums.SCENE_IDENTIFIER;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,10 +20,12 @@ public abstract class GenericController<T> extends SceneController {
 
     AbstractBll<T> abstractBll;
 
+    protected ObservableList<T> items;
     @FXML
     public void initialize() {
         setupTableColumns();
-        tableView.setItems(loadData());
+        items = abstractBll.getElements();
+        tableView.setItems(items);
         tableView.setEditable(true);
 
         tableView.setRowFactory(tv -> {
@@ -39,11 +43,6 @@ public abstract class GenericController<T> extends SceneController {
 
     protected abstract TableColumn<T, ?> getEditableColumn();
 
-    private ObservableList<T> loadData() {
-        ObservableList<T> items = FXCollections.observableArrayList();
-        items.addAll(abstractBll.getElements());
-        return items;
-    }
 
     @FXML
     public void handleAddItem() {
@@ -68,7 +67,6 @@ public abstract class GenericController<T> extends SceneController {
 
     public void addItem(T newItem) {
         abstractBll.addElement(newItem);
-        tableView.setItems(loadData());
     }
 
     @FXML
@@ -89,11 +87,23 @@ public abstract class GenericController<T> extends SceneController {
 
     public void deleteItem(T selectedItem) {
         abstractBll.deleteElement(selectedItem);
-        tableView.setItems(loadData());
     }
 
     public void showAlert(Alert.AlertType alertType, String message) {
         Alert alert = new Alert(alertType, message);
         alert.show();
+    }
+    @FXML
+    protected void goToClientsView() {
+        ApplicationHandler._instance.navigateToClientsView();
+    }
+
+    @FXML
+    protected void goToProductsView() {
+        ApplicationHandler._instance.navigateToProductsView();
+    }
+    @FXML
+    protected void goToOrdersView() {
+        ApplicationHandler._instance.navigateToOrdersView();
     }
 }
