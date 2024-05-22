@@ -14,15 +14,30 @@ import java.util.logging.Logger;
 
 import connection.ConnectionFactory;
 
+/**
+ * Generic Data Access Object class that provides common database operations for any type.
+ * It handles CRUD (Create, Read, Update, Delete) operations and manages database connections.
+ *
+ * @param <T> the type parameter that represents the entity type for which this DAO is used.
+ */
 public class AbstractDAO<T> {
     protected static final Logger LOGGER = Logger.getLogger(AbstractDAO.class.getName());
 
     private final Class<T> type;
 
+    /**
+     * Constructs a new DAO for managing database operations for the specified type.
+     * @param type the class of the type the DAO will manage.
+     */
     public AbstractDAO(Class<T> type) {
         this.type = type;
     }
 
+    /**
+     * Creates a SQL query to select a row from the database by a specific field.
+     * @param field the field name to filter by.
+     * @return a SQL query string.
+     */
     private String createSelectQuery(String field) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -33,6 +48,10 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     * Finds all records of type T in the database.
+     * @return a list of all records of type T.
+     */
     public List<T> findAll() {
         List<T> list = new ArrayList<>();
         String sql = "SELECT * FROM " + "\"" + type.getSimpleName().toLowerCase() +"\"";
@@ -55,6 +74,11 @@ public class AbstractDAO<T> {
         return list;
     }
 
+    /**
+     * Finds an entity of type T by its ID.
+     * @param id the ID of the entity to find.
+     * @return the found entity or null if no entity with the given ID exists.
+     */
     public T findById(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -77,6 +101,12 @@ public class AbstractDAO<T> {
         return null;
     }
 
+
+    /**
+     * Creates list of entities of type T from the result set.
+     * @param resultSet the result set containing the database records.
+     * @return a list of entities.
+     */
     private List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<T>();
         Constructor[] ctors = type.getDeclaredConstructors();
@@ -117,6 +147,11 @@ public class AbstractDAO<T> {
         return list;
     }
 
+    /**
+     * Inserts an entity of type T in the database.
+     * @param t the entity to insert.
+     * @return true if the operation was successful, false otherwise.
+     */
     public boolean insert(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -169,6 +204,11 @@ public class AbstractDAO<T> {
         return result;
     }
 
+    /**
+     * Updates an entity of type T in the database.
+     * @param t the entity to update.
+     * @return true if the operation was successful, false otherwise.
+     */
     public boolean update(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -227,6 +267,11 @@ public class AbstractDAO<T> {
         return result;
     }
 
+    /**
+     * Deletes an entity of type T from the database.
+     * @param t the entity to delete.
+     * @return true if the operation was successful, false otherwise.
+     */
     public boolean delete(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -256,6 +301,10 @@ public class AbstractDAO<T> {
         return result;
     }
 
+    /**
+     * Retrieves the highest ID used in the table for type T.
+     * @return the highest ID.
+     */
     public int getLastInsertId() {
         int maxId = -1;
         String sql = "SELECT MAX(id) FROM \"" + type.getSimpleName().toLowerCase() + "\"";
