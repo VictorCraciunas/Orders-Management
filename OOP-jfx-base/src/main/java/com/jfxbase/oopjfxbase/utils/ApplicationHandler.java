@@ -24,7 +24,7 @@ public class ApplicationHandler {
         this.stage = stage;
         this.stage.setTitle(Environment.APP_TITLE);
         this.stage.setFullScreen(Environment.IS_FULLSCREEN);
-        this.stage.setScene(new Scene(this.views.get(SCENE_IDENTIFIER.Home), 800, 800));
+        this.stage.setScene(new Scene(this.views.get(SCENE_IDENTIFIER.Home), 700, 650));
         this.stage.show();
 
         Logger.info("Application started..");
@@ -83,6 +83,16 @@ public class ApplicationHandler {
         try {
             this.views.put(SCENE_IDENTIFIER.Products_View, FXMLLoader.load(Objects.requireNonNull(JFXBaseApplication.class.getResource("products-view.fxml"))));
             this.changeScene(SCENE_IDENTIFIER.Products_View);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+    public void navigateToBillsView() {
+        try {
+            this.views.put(SCENE_IDENTIFIER.Bills_View, FXMLLoader.load(Objects.requireNonNull(JFXBaseApplication.class.getResource("bills-view.fxml"))));
+            this.changeScene(SCENE_IDENTIFIER.Bills_View);
 
         } catch (IOException e) {
             e.printStackTrace();

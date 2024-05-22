@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="650.0" prefWidth="700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.BillController">
+    <StackPane layoutX="60.0" layoutY="155.0" prefHeight="368.0" prefWidth="575.0">
+        <children>
+            <TableView fx:id="tableView" prefHeight="368.0" prefWidth="599.0">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="59.39999467134476" text="id" />
+                    <TableColumn fx:id="nameClientColumn" prefWidth="133.19998931884766" text="Client Name" />
+                    <TableColumn fx:id="nameProductColumn" prefWidth="162.0" text="Product Name" />
+                    <TableColumn fx:id="quantityColumn" prefWidth="116.39996337890625" text="Quantity" />
+                    <TableColumn fx:id="totalPriceColumn" prefWidth="100.79998779296875" text="Total Price" />
+                </columns>
+            </TableView>
+        </children>
+    </StackPane>
+    <HBox alignment="CENTER" layoutY="72.0" prefHeight="61.0" prefWidth="700.0" spacing="20.0" styleClass="menu-bar">
+        <children>
+            <Button onAction="#goToProductsView" snapToPixel="false" styleClass="menu-button" text="View Products" />
+            <Button onAction="#goToClientsView" snapToPixel="false" styleClass="menu-button" text="View Clients" />
+            <Button onAction="#goToOrdersView" snapToPixel="false" styleClass="menu-button" text="View Orders" />
+            <Button onAction="#goToBillsView" snapToPixel="false" styleClass="menu-button" text="View Bills" />
+        </children>
+    </HBox>
+    <Label layoutX="298.0" styleClass="text-color" text="Bills">
+        <font>
+            <Font name="Wingdings 2" size="60.0" />
+        </font>
+    </Label>
+   <StackPane layoutX="228.0" layoutY="549.0" prefHeight="62.0" prefWidth="240.0" styleClass="inputs-background-color">
+      <children>
+          <Button onAction="#handleDeleteItem" prefHeight="34.0" prefWidth="104.0" styleClass="add-delete-button" text="Delete Bill" />
+      </children>
+   </StackPane>
+
+
+</AnchorPane>

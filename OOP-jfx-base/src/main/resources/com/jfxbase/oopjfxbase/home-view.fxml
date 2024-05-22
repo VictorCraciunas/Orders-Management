@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="273.0" prefWidth="266.0" snapToPixel="false" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <Button id="goToByeScene" onAction="#goToClientsView" snapToPixel="false" text="View Clients" />
-   <Button id="goToByeScene" layoutX="81.0" onAction="#goToProductsView" layoutY="134.0"  snapToPixel="false" text="View Products" />
-   <Button id="goToByeScene" layoutX="81.0" layoutY="157.0"  onAction="#goToOrdersView" snapToPixel="false" text="View Orders" />
-</VBox>
+<Pane prefHeight="650.0" prefWidth="700.0" styleClass="background-color" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.HomeController">
+   <children>
+      <HBox alignment="CENTER" layoutY="163.0" prefHeight="61.0" prefWidth="700.0" spacing="20.0" styleClass="menu-bar">
+         <children>
+            <Button onAction="#goToProductsView" snapToPixel="false" styleClass="menu-button" text="View Products" />
+            <Button onAction="#goToClientsView" snapToPixel="false" styleClass="menu-button" text="View Clients" />
+            <Button onAction="#goToOrdersView" snapToPixel="false" styleClass="menu-button" text="View Orders" />
+            <Button onAction="#goToBillsView" snapToPixel="false" styleClass="menu-button" text="View Bills" />
+         </children>
+      </HBox>
+      <Label layoutX="204.0" layoutY="76.0" styleClass="text-color" text="Hello There">
+         <font>
+            <Font name="Wingdings 2" size="60.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="288.0" minHeight="18.0" minWidth="100.0" prefHeight="313.0" prefWidth="532.0" styleClass="reclama" />
+
+   </children>
+</Pane>

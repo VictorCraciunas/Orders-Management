@@ -43,5 +43,7 @@ public abstract class AbstractBll<T> {
     // Abstract method for validating elements
     public abstract boolean isValidElement(T t);
 
-    protected abstract int getGeneratedId();
+    public  int getGeneratedId(){
+        return abstractDAO.getLastInsertId();
+    }
 }

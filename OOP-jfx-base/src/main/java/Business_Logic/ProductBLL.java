@@ -11,10 +11,10 @@ public class ProductBLL extends AbstractBll<Product>{
 
     @Override
     public boolean isValidElement(Product product) {
-        return true;
+        if(product.getQuantity() >=0 && product.getPrice() >=0){
+            return true;
+        }
+        return false;
     }
-    @Override
-    protected int getGeneratedId() {
-        return abstractDAO.getLastInsertId(); // Implement this method in your AbstractDAO class to fetch the last inserted ID
-    }
+
 }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="576.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.ClientsController">
+<AnchorPane prefHeight="650.0" prefWidth="700.0" styleClass="background-color" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.controllers.ClientsController">
    <children>
-      <StackPane layoutY="47.0" prefHeight="451.0" prefWidth="532.0">
+      <StackPane layoutX="84.0" layoutY="141.0" prefHeight="368.0" prefWidth="532.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="451.0" prefWidth="556.0">
+            <TableView fx:id="tableView" prefHeight="351.0" prefWidth="426.0">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="59.39999467134476" text="id" />
                 <TableColumn fx:id="firstNameColumn" prefWidth="158.20000457763672" text="First Name" />
@@ -18,20 +19,42 @@
             </TableView>
          </children>
       </StackPane>
-       <VBox layoutX="14.0" layoutY="508.0" spacing="10.0">
-           <TextField fx:id="firstNameInput" promptText="First Name" />
-           <TextField fx:id="lastNameInput" promptText="Last Name" />
-           <TextField fx:id="emailInput" promptText="Email" />
-           <Button onAction="#handleAddItem" text="Add Client" />
-       </VBox>
-       <Text layoutX="228.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients">
+      <HBox alignment="CENTER" layoutY="526.0" prefHeight="123.0" prefWidth="700.0" spacing="40.0" styleClass="inputs-background-color">
+         <children>
+            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="281.0" spacing="20.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="104.0" prefWidth="222.0" spacing="10.0">
+                     <children>
+                          <TextField fx:id="firstNameInput" prefHeight="26.0" prefWidth="152.0" promptText="First Name" />
+                          <TextField fx:id="lastNameInput" prefHeight="26.0" prefWidth="134.0" promptText="Last Name" />
+                          <TextField fx:id="emailInput" promptText="Email" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="123.0" prefWidth="157.0" spacing="20.0">
+               <children>
+                    <Button onAction="#handleAddItem" prefHeight="35.0" prefWidth="120.0" styleClass="add-delete-button" text="Add Client" />
+                  <Button onAction="#handleDeleteItem" prefHeight="35.0" prefWidth="120.0" styleClass="add-delete-button" text="Delete Client" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+       <HBox alignment="CENTER" layoutY="72.0" prefHeight="61.0" prefWidth="700.0" spacing="20.0" styleClass="menu-bar">
+           <children>
+               <Button onAction="#goToProductsView" snapToPixel="false" styleClass="menu-button" text="View Products" />
+               <Button onAction="#goToClientsView" snapToPixel="false" styleClass="menu-button" text="View Clients" />
+               <Button onAction="#goToOrdersView" snapToPixel="false" styleClass="menu-button" text="View Orders" />
+               <Button onAction="#goToBillsView" snapToPixel="false" styleClass="menu-button" text="View Bills" />
+           </children>
+       </HBox>
+       <Label layoutX="262.0" styleClass="text-color" text="Clients">
            <font>
-               <Font size="26.0" />
+               <Font name="Wingdings 2" size="60.0" />
            </font>
-       </Text>
-      <Button layoutX="305.0" layoutY="560.0" onAction="#handleDeleteItem" text="Delete Client" />
-       <Button id="goToByeScene" layoutX="451.0" layoutY="523.0" onAction="#goToClientsView" snapToPixel="false" text="View Clients" />
-       <Button id="goToByeScene" layoutX="451.0" layoutY="573.0" onAction="#goToProductsView" snapToPixel="false" text="View Products" />
-       <Button id="goToByeScene" layoutX="451.0" layoutY="547.0" onAction="#goToOrdersView" snapToPixel="false" text="View Orders" />
+       </Label>
    </children>
 </AnchorPane>

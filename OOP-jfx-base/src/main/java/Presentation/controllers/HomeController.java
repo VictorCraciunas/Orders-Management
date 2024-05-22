@@ -21,4 +21,9 @@ public class HomeController extends SceneController {
     protected void goToOrdersView() {
         this.changeScene(SCENE_IDENTIFIER.Orders_View);
     }
+
+    @FXML
+    protected void goToBillsView() {
+        this.changeScene(SCENE_IDENTIFIER.Bills_View);
+    }
 }

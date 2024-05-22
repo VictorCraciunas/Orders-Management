@@ -50,7 +50,8 @@ public class OrderController extends GenericController<Order> {
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         clientIdColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getClientId()).asObject());
         productIdColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getProductId()).asObject());
-        productQuantityColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getProductQuantity()).asObject());    }
+        productQuantityColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getProductQuantity()).asObject());
+    }
 
     @Override
     protected TableColumn<Order, ?> getEditableColumn() {

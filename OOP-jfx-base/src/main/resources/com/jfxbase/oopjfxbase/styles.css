@@ -1,0 +1,77 @@
+/* Styles for the MenuBar */
+.menu-bar {
+    -fx-background-color: linear-gradient(to right, #ff0000, #569cf6); /* Red to purple gradient */
+    -fx-padding: 5px 10px;
+}
+
+/* Styles for all buttons */
+.menu-button {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-text-fill: white; /* White text color */
+    -fx-font-size: 20px; /* Larger text size */
+    -fx-padding: 10px 15px; /* Larger button size */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-background-radius: 15px; /* Ensures the background fill also respects the border radius */
+    -fx-border: 2px; /* Transparent border that occupies space */
+}
+
+/* Hover effects for buttons */
+.menu-button:hover {
+    -fx-border-color: white; /* White border on hover */
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Slight white tint on hover */
+    -fx-cursor: hand;
+}
+
+.text-color{
+    -fx-text-fill:  linear-gradient(to right, #ff0000, #569cf6); /* Red to purple gradient */
+}
+.background-color{
+    -fx-background-color: #F2F2F7; /* Transparent background */
+
+}
+.text-field {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 40px;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-border-color: #9ecaed;
+    -fx-background-radius: 5px;
+    -fx-padding: 4px 7px;
+}
+
+.text-field:focused {
+    -fx-border-color: #9ecaed;
+    -fx-border-width: 2px;
+}
+
+.inputs-background-color{
+    -fx-background-color: #d9d9e7; /* Transparent background */
+
+}
+
+.add-delete-button {
+    -fx-text-fill: black; /* Equivalent to color */
+    -fx-cursor: hand; /* Equivalent to cursor: pointer */
+    -fx-border-color: white; /* Uses static color since CSS variables aren't supported */
+    -fx-border-width: 1; /* Equivalent to border: 1px solid */
+    -fx-border-radius: 4; /* Equivalent to border-radius: 4px */
+    -fx-padding: 0.8em 2em; /* Equivalent to padding */
+    -fx-background-color: white; /* Uses static background color */
+    -fx-background-radius: 4; /* Consistent with the border-radius */
+    -fx-font-size: 12px; /* Larger text size */
+}
+
+.add-delete-button:hover {
+    -fx-text-fill: black; /* Change text color on hover */
+    -fx-background-color: #3481ec; /* Change background on hover */
+    -fx-border-color: #3481ec; /* Uses static color since CSS variables aren't supported */
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5); /* Simulate box-shadow */
+}
+
+.add-delete-button:pressed {
+    -fx-effect: none; /* Remove shadow effect */
+}
+
+.reclama{
+    -fx-background-image: url('img.png');
+}

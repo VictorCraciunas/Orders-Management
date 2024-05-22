@@ -20,12 +20,10 @@ public abstract class GenericController<T> extends SceneController {
 
     AbstractBll<T> abstractBll;
 
-    protected ObservableList<T> items;
     @FXML
     public void initialize() {
         setupTableColumns();
-        items = abstractBll.getElements();
-        tableView.setItems(items);
+        tableView.setItems(abstractBll.getElements());
         tableView.setEditable(true);
 
         tableView.setRowFactory(tv -> {
@@ -47,12 +45,12 @@ public abstract class GenericController<T> extends SceneController {
     @FXML
     public void handleAddItem() {
         if (!areInputsEmpty()) {
-            T newClient = createItemFromInputs();
-            if (!abstractBll.isValidElement(newClient)) {
-                showAlert(Alert.AlertType.ERROR, "Invalid client data");
+            T newItem = createItemFromInputs();
+            if (!abstractBll.isValidElement(newItem)) {
+                showAlert(Alert.AlertType.ERROR, "Invalid data");
                 return;
             }
-            addItem(newClient);
+            addItem(newItem);
             clearTextFields();
         } else {
             showAlert(Alert.AlertType.ERROR, "Empty TextFields for inserting an item");
@@ -105,5 +103,9 @@ public abstract class GenericController<T> extends SceneController {
     @FXML
     protected void goToOrdersView() {
         ApplicationHandler._instance.navigateToOrdersView();
+    }
+    @FXML
+    protected void goToBillsView() {
+        ApplicationHandler._instance.navigateToBillsView();
     }
 }

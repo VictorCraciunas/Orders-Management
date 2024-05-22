@@ -13,8 +13,4 @@ public class ClientBLL extends AbstractBll<Client> {
         }
         return false;
     }
-    @Override
-    protected int getGeneratedId() {
-        return abstractDAO.getLastInsertId(); // Implement this method in your AbstractDAO class to fetch the last inserted ID
-    }
 }
