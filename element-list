@@ -1,0 +1,10 @@
+module:com.jfxbase.oopjfxbase
+Business_Logic
+Business_Logic.Validators
+com.jfxbase.oopjfxbase
+com.jfxbase.oopjfxbase.utils
+com.jfxbase.oopjfxbase.utils.enums
+connection
+Data_Access
+Model
+Presentation.controllers
