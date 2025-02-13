@@ -9,7 +9,7 @@ import java.sql.*;
 public class ConnectionFactory {
     static String DB_URL = "jdbc:postgresql://localhost:5432/ordersmanagement";
     static String DB_USER = "postgres";
-    static String DB_PASSWORD = "1k2k3k4k";
+    static String DB_PASSWORD = "";
 
     /**
      * Obtains a connection to the database using predefined credentials.
