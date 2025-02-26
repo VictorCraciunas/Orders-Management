@@ -74,7 +74,7 @@ OrderManagementSystem/
 ## Installation & Running the Application
 ### 1. Clone the Repository
 ```
-git clone https://github.com/yourusername/Orders-Management.git
+git clone https://github.com/VictorCraciunas/Orders-Management.git
 ```
 
 ### 2. Configure Database (PostgreSQL with DBeaver)
